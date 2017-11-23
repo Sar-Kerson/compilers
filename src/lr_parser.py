@@ -7,7 +7,7 @@ Created on Wed Nov 08 23:13:09 2017
 
 import lr_gramtools               #!!!!!!!!!
 
-value={'id':5}
+value={'a':5}
 
 class parser:
     
@@ -100,10 +100,18 @@ class parser:
                         num_stack[-6] = num_stack[-4]
                     elif num == 6:
                         prod[0] = 'F'
-                        prod[1] = 'id'
+                        prod[1] = 'a'
                         num_stack[-2] = 10
+                    elif num == 7:
+                        prod[0] = 'E'
+                        prod[1] = 'E - T'
+                        num_stack[-6] = num_stack[-6] - num_stack[-2]
+                    elif num == 8:
+                        prod[0] = 'T'
+                        prod[1] = 'T / F'
+                        num_stack[-6] = num_stack[-6] / num_stack[-2]
                     prod[1] = filter(lambda x: x != ' ', prod[1])
-                    if prod[1] == 'id':                 #!!!!!need to change if case like: F->F + id
+                    if prod[1] == 'a':                 #!!!!!need to change if case like: F->F + id
                         for i in range(2):
                             stack.pop(-1)
                         for i in range(1):
